@@ -2,6 +2,7 @@ import * as React from "react";
 import "./App.css";
 import { PersistedValue } from "./PersistentValue";
 import Addition from "./Addition";
+import { LocalStorageTracking } from "./LocalStorageTracking";
 
 const logo = require("./logo.svg");
 
@@ -55,6 +56,7 @@ class App extends React.Component {
         </p>
         <button onClick={this.stopAll}>Stop All</button>
         <button onClick={this.startAll}>Start All</button>
+        <div><LocalStorageTracking /></div>
       </div>
     );
   }
