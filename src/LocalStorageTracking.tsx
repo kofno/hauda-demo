@@ -7,13 +7,18 @@ interface State {
   aNumber: StoredValue;
 }
 
-export class LocalStorageTracking extends React.Component<{}, State> {
-  constructor(_props: {}) {
+interface Props {
+  value: PersistedValue;
+}
+
+
+export class LocalStorageTracking extends React.Component<Props, State> {
+  constructor(_props: Props) {
     super(_props);
   }
 
   componentWillMount() {
-    this.storage = new PersistedValue({ key: "aLocal" });
+    this.storage = this.props.value;
     this.storage.status.subscribe(aNumber => {
       this.setState({ aNumber });
     });

@@ -1,36 +1,38 @@
-import * as React from "react";
-import "./App.css";
-import { PersistedValue } from "./PersistentValue";
-import Addition from "./Addition";
-import { LocalStorageTracking } from "./LocalStorageTracking";
+import * as React from 'react';
+import './App.css';
+import { LocalStorageTracking } from './LocalStorageTracking';
+import { PersistedValue } from './PersistedValue';
+import { Maybe, nothing, just } from 'maybeasy';
 
-const logo = require("./logo.svg");
+const logo = require('./logo.svg');
 
-class App extends React.Component {
-  localNumber: PersistedValue = new PersistedValue({ key: "aLocal" });
-  sessionNumber: PersistedValue = new PersistedValue({
-    key: "aSession",
-    storage: window.sessionStorage
-  });
+class App extends React.Component<{}, {}> {
+  localNumber: Maybe<PersistedValue> = nothing<PersistedValue>();
+  sessionNumber: Maybe<PersistedValue> = nothing<PersistedValue>();
 
   componentWillMount() {
-    this.localNumber.start();
-    this.sessionNumber.start();
+    this.localNumber = just(new PersistedValue({ key: 'aLocal' }));
+    this.sessionNumber = just(
+      new PersistedValue({
+        key: 'aSession',
+        storage: window.sessionStorage,
+      }),
+    );
   }
 
   componentWillUnmount() {
-    this.localNumber && this.localNumber.stop();
-    this.sessionNumber && this.sessionNumber.stop();
+    this.localNumber.map(ln => ln.stop());
+    this.sessionNumber.map(sn => sn.stop());
   }
 
   stopAll = () => {
-    this.localNumber.stop();
-    this.sessionNumber.stop();
+    this.localNumber.map(ln => ln.mute());
+    this.sessionNumber.map(sn => sn.mute());
   };
 
   startAll = () => {
-    this.localNumber.start();
-    this.sessionNumber.start();
+    this.localNumber.map(ln => ln.unmute());
+    this.sessionNumber.map(sn => sn.unmute());
   };
 
   render() {
@@ -47,16 +49,24 @@ class App extends React.Component {
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
         <p>Local Storage</p>
-        <p>
-          <Addition aNumber={this.localNumber} />
-        </p>
+        <div>
+          {this.localNumber
+            .map(ln => <LocalStorageTracking value={ln} />)
+            .getOrElse(() => <span />)}
+        </div>
         <p>Session Storage</p>
-        <p>
-          <Addition aNumber={this.sessionNumber} />
-        </p>
+        <div>
+          {this.sessionNumber
+            .map(sn => <LocalStorageTracking value={sn} />)
+            .getOrElse(() => <span />)}
+        </div>
         <button onClick={this.stopAll}>Stop All</button>
         <button onClick={this.startAll}>Start All</button>
-        <div><LocalStorageTracking /></div>
+        <div>
+          {this.localNumber
+            .map(ln => <LocalStorageTracking value={ln} />)
+            .getOrElse(() => <span />)}
+        </div>
       </div>
     );
   }

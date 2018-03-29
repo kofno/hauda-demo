@@ -1,7 +1,7 @@
 import * as React from "react";
-import { PersistedValue } from "./PersistentValue";
 import { just, nothing } from "maybeasy";
 import { observer } from "mobx-react";
+import {PersistedValue} from "./PersistedValue";
 
 interface Props {
   aNumber: PersistedValue;
