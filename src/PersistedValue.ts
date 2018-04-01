@@ -27,7 +27,6 @@ export class PersistedValue {
   }
 
   public add = () => {
-    console.log('Foo');
     this.doMath(n => n + 1);
   };
 
