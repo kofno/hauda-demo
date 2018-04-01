@@ -3109,6 +3109,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.0"
 
+hauda@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hauda/-/hauda-1.0.0.tgz#be6e475c2201bedca7cb453ec23e4d392543426c"
+  dependencies:
+    maybeasy "^2.0.1"
+    resulty "^2.0.1"
+    rxjs "^5.x"
+
 hawk@3.1.3, hawk@~3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/hawk/-/hawk-3.1.3.tgz#078444bd7c1640b0fe540d2c9b73d59678e8e1c4"
@@ -4589,6 +4597,10 @@ mobx-react@^5.0.0:
   resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-5.0.0.tgz#8d5a33be376fa22b184a6f555d40a6a3a8459a16"
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+mobx-utils@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mobx-utils/-/mobx-utils-4.0.0.tgz#dabe25c519ef61fbee9ee42b993580d5707a3789"
 
 mobx@^4.1.0:
   version "4.1.0"
@@ -6093,9 +6105,9 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^5.5.7:
-  version "5.5.7"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.7.tgz#afb3d1642b069b2fbf203903d6501d1acb4cda27"
+rxjs@^5.x:
+  version "5.5.8"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.8.tgz#b2b0809a57614ad6254c03d7446dea0d83ca3791"
   dependencies:
     symbol-observable "1.0.1"
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { LocalStorageTracking } from './LocalStorageTracking';
+import LocalStorageTracking from './LocalStorageTracking';
 import { PersistedValue } from './PersistedValue';
 import { Maybe, nothing, just } from 'maybeasy';
 
@@ -51,20 +51,20 @@ class App extends React.Component<{}, {}> {
         <p>Local Storage</p>
         <div>
           {this.localNumber
-            .map(ln => <LocalStorageTracking value={ln} />)
+            .map(ln => <LocalStorageTracking store={ln} />)
             .getOrElse(() => <span />)}
         </div>
         <p>Session Storage</p>
         <div>
           {this.sessionNumber
-            .map(sn => <LocalStorageTracking value={sn} />)
+            .map(sn => <LocalStorageTracking store={sn} />)
             .getOrElse(() => <span />)}
         </div>
         <button onClick={this.stopAll}>Stop All</button>
         <button onClick={this.startAll}>Start All</button>
         <div>
           {this.localNumber
-            .map(ln => <LocalStorageTracking value={ln} />)
+            .map(ln => <LocalStorageTracking store={ln} />)
             .getOrElse(() => <span />)}
         </div>
       </div>
